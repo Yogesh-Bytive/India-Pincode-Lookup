@@ -7,7 +7,7 @@ function isNumeric(num) {
 }
 
 module.exports = {
-    lookup: function lookup(pincode) {
+    lookup: function(pincode) {
         if (isNumeric(pincode)) {
             if (typeof pincode === 'string') {
                 return pincodeData.filter(function(e) {
@@ -24,5 +24,18 @@ module.exports = {
                 return e.officeName.match(regex);
             });
         }
+    },
+
+    lookupByState: function(stateName) {
+        return pincodeData.filter(function(e) {
+            return e.state === stateName;
+        });
+    },
+
+    lookupByDistrict: function(districtName) {
+        return pincodeData.filter(function(e) {
+            return e.district === districtName;
+        });
     }
-}
+};
+
